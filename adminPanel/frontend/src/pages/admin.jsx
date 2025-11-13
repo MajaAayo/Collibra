@@ -147,9 +147,20 @@ const Admin = () => {
               <label>Genre:</label>
               <select name="genre" value={formData.genre} onChange={handleChange} required>
                 <option value="all">All Genres</option>
+                <option value="romantic drama with sci-fi">Romantic drama with Sci-fi</option>
                 <option value="fiction">Fiction</option>
                 <option value="non-fiction">Non-fiction</option>
                 <option value="romance">Romance</option>
+                <option value="thriller">Thriller</option>
+                <option value="fantasy">Fantasy</option>
+                <option value="history">History</option>
+                <option value="science">Science</option>
+                <option value="biography">Biography</option>
+                <option value="self-help">Self-help</option>
+                <option value="mystery">Mystery</option>
+                <option value="historical fiction">Historical Fiction</option>
+                <option value="education">Education</option>
+
               </select>
             </div>
             <div className="form-group">

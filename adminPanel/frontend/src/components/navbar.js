@@ -1,6 +1,6 @@
 // src/components/Navbar.jsx
 import React from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import "../css/style.css";
 
 const Navbar = () => {
@@ -9,20 +9,35 @@ const Navbar = () => {
       <div className="top-bar"></div>
       <nav className="navbar">
         <div className="logo">
-          <Link to="/admin">
+          <NavLink to="/admin">
             <img src="/assets/LOGO/pngl.png" alt="Collibra Logo" />
             <span>Collibra</span>
-          </Link>
+          </NavLink>
         </div>
         <ul className="nav-links">
           <li>
-            <Link to="/admin">Home</Link>
+            <NavLink
+              to="/admin"
+              className={({ isActive }) => (isActive ? "active" : "")}
+            >
+              Home
+            </NavLink>
           </li>
           <li>
-            <Link to="/ViewBooks">View Books</Link>
+            <NavLink
+              to="/ViewBooks"
+              className={({ isActive }) => (isActive ? "active" : "")}
+            >
+              View Books
+            </NavLink>
           </li>
           <li>
-            <Link to="/EditBook">Update Books</Link>
+            <NavLink
+              to="/EditBook"
+              className={({ isActive }) => (isActive ? "active" : "")}
+            >
+              Update Books
+            </NavLink>
           </li>
         </ul>
       </nav>

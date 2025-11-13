@@ -113,6 +113,7 @@ const Explore = () => {
             <option value="self-help">Self-help</option>
             <option value="mystery">Mystery</option>
             <option value="historical fiction">Historical Fiction</option>
+            <option value="education">Education</option>
           </select>
         </div>
       </aside>

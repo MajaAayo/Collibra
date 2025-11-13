@@ -104,11 +104,19 @@
   color: #333333;
   font-weight: 500;
   text-decoration: none;
-  transition: color 0.3s;
+  transition: color 0.3s, border-bottom 0.3s; /* smooth transition */
+  padding-bottom: 2px; /* space for underline */
 }
 
+/* Hover effect */
 .nav-links li a:hover {
   color: #4A90E2;
+}
+
+/* Clicked/Active effect */
+.nav-links li a.active {
+  color: #4A90E2;
+  border-bottom: 2px solid #4A90E2; /* underline */
 }
 
 /* Admin Container */
@@ -142,13 +150,13 @@
   margin-bottom: 15px;
 }
 
-
 .form-group label {
   display: block;
   font-weight: 500;
   color: #333;
   margin-bottom: 5px;
 }
+
 .form-group select + input {
   width: 100%;
   padding: 10px;
@@ -210,7 +218,7 @@
   background-color: #336699;
 }
 
-/* Specific Styles for Update Book Page */
+/* Update Book Select */
 .update-book-select {
   margin-bottom: 20px;
 }
@@ -281,13 +289,83 @@
   border-radius: 5px;
 }
 
-.books-list table a {
-  color: #4A90E2;
-  text-decoration: none;
+/* Tooltip Description Styles */
+.desc-cell {
+  text-align: center;
+  position: relative;
 }
 
-.books-list table a:hover {
+.desc-tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+.desc-btn {
+  background-color: #4A90E2;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 22px;
+  height: 22px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 22px;
+  transition: background-color 0.2s ease;
+}
+
+.desc-btn:hover {
+  background-color: #336699;
+}
+
+/* Description box to the right of the button */
+.desc-tooltip .desc-box {
+  display: none; /* hidden by default */
+  position: absolute;
+  top: 50%;
+  left: 110%; /* positions it to the right */
+  transform: translateY(-50%); /* vertically centered */
+  background-color: #ffffff;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 15px 20px;
+  width: 450px;
+  max-width: 95vw;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15);
+  font-size: 15px;
+  color: #333;
+  z-index: 100;
+  text-align: justify; /* justified text */
+  word-wrap: break-word;
+  white-space: normal;
+  opacity: 0; /* start hidden for fade-in */
+  transition: opacity 0.2s ease; /* smooth fade-in */
+}
+
+/* Show the box on hover with smooth fade-in */
+.desc-tooltip:hover .desc-box {
+  display: block;
+  opacity: 1;
+}
+
+/* Remove vertical movement in keyframes */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* PDF and Delete Buttons */
+.pdf-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #4A90E2;
   text-decoration: underline;
+  padding: 0;
+}
+
+.pdf-btn:hover {
+  color: #336699;
 }
 
 .edit-btn,
@@ -310,13 +388,32 @@
   background-color: #e55a5a;
 }
 
-.delete-btn {
-  background-color: #dc3545;
-  color: #ffffff;
+.delete-btn:hover {
+  background-color: #4A90E2;
 }
 
-.delete-btn:hover {
-  background-color: #c82333;
+/* Logout Button */
+.logout-btn {
+  background-color: #000000;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 8px 16px;
+  cursor: pointer;
+  font-weight: bold;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+}
+
+.logout-btn:hover {
+  background-color: #4A90E2;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
+  transform: translateY(-2px);
+}
+
+.logout-btn:active {
+  transform: translateY(1px);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
 }
 
 /* Responsive Styles */
@@ -380,27 +477,4 @@
   .books-list table td {
     padding: 6px;
   }
-}
-
-.logout-btn {
-  background-color: #000000;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  padding: 8px 16px;
-  cursor: pointer;
-  font-weight: bold;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-  transition: all 0.3s ease;
-}
-
-.logout-btn:hover {
-  background-color: #4A90E2;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.25);
-  transform: translateY(-2px);
-}
-
-.logout-btn:active {
-  transform: translateY(1px);
-  box-shadow: 0 1px 3px rgba(0,0,0,0.2);
 }

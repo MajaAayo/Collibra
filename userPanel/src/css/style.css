@@ -646,8 +646,8 @@ background-color: #f0e9e9;
     color: #000;
     outline: none;
     position: absolute;
-    top: -10px;
-    right: -10px;
+    top: -0px;
+    right: 10px;
     margin: 0;
     padding: 0.5em;
     width: 2.5em;
@@ -1912,3 +1912,4 @@ footer {
     font-size: 24px;
   }
 }
+
