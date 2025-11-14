@@ -11,7 +11,7 @@ const Footer = () => {
               <img src="/assets/Logo/pngl.png" alt="logo-img" />
               <span>COLLIBRA</span>
             </div>
-            <p>Your digital library with over every book across various genres.</p>
+            <p>Thousands of books, countless genres, one digital home.</p>
             <div className="social-links">
               <a href="https://www.facebook.com/"><i className="fab fa-facebook-f"></i></a>
               <a href="https://www.twitter.com/"><i className="fab fa-x"></i></a>

@@ -6,7 +6,7 @@ const Front = () => {
     <>
       <div className="hero">
   <div className="hero-text">
-    <h4>One click destination for every book.</h4>
+    <h4>Knowledge at Your Fingertips.</h4>
     <h1>Over a thousand books at your fingertips —
       <span>"read what you love, learn what you need."</span>
     </h1>
