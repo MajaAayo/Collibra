@@ -1,8 +1,10 @@
+// import necessary modules and components
 import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import Navbar from "../components/navbar";
 import "../css/style.css";
 
+// Check login status and render admin panel 
 const Admin = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(
     !!sessionStorage.getItem("admin")
@@ -25,9 +27,10 @@ const Admin = () => {
     updated_on: ''
   });
 
+  // Reset file input fields
   const coverImageRef = useRef(null);
   const bookPdfRef = useRef(null);
-
+// Fetch books when logged in
   useEffect(() => {
     if (isLoggedIn) fetchBooks();
   }, [isLoggedIn]);
@@ -73,6 +76,7 @@ const Admin = () => {
       return;
     }
 
+    // Prepare form data for file upload ✔ Backend will store files and save record in DB
     try {
       const data = new FormData();
       Object.keys(formData).forEach(key => data.append(key, formData[key]));
@@ -80,6 +84,7 @@ const Admin = () => {
         headers: { 'Content-Type': 'multipart/form-data' }
       });
       alert('Book added!');
+      // Clear form and refresh book list
       fetchBooks();
       setFormData({
         title: '',
@@ -98,9 +103,9 @@ const Admin = () => {
       setError('Failed to save book.');
     }
   };
-
+// fpr publication year options
   const years = Array.from({ length: 2025 - 1800 + 1 }, (_, i) => 1800 + i);
-
+// show login page and hide admin panel if not logged in
   if (!isLoggedIn) {
     return (
       <div className="admin-container" style={{ maxWidth: 400, margin: "60px auto", padding: 32, background: "#f9f9f9", borderRadius: 8 }}>

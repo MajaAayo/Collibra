@@ -12,6 +12,8 @@ const ViewBooks = () => {
     fetchBooks();
   }, []);
 
+  // Fetch all books from the backend API
+  // send GET request to /api/books if backend is disabled show error message
   const fetchBooks = async () => {
     try {
       const res = await axios.get("http://localhost:5000/api/books");
@@ -39,6 +41,7 @@ const ViewBooks = () => {
     }
   };
 
+  // handle downloading book PDF
   const handleDownloadBook = async (pdfFileName, bookTitle) => {
     try {
       const response = await axios.get(

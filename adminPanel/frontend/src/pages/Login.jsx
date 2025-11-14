@@ -16,7 +16,7 @@ const Login = () => {
     setLoading(true);
 
     try {
-      const res = await axios.post("http://localhost:5000/api/login", { username, password });
+      const res = await axios.post("http://localhost:5000/api/login", { username, password }); //Sends login data to your backend API.
       setLoading(false);
       if (res.data?.message === "Login successful") {
         localStorage.setItem("admin", JSON.stringify(res.data.admin));

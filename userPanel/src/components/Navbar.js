@@ -40,6 +40,7 @@ const Navbar = () => {
         fetchBooks();
     }, []);
 
+    // Reads bookmarks from localStorage and updates count
     const updateBookmarkCount = useCallback(() => {
         const bookmarks = JSON.parse(localStorage.getItem('bookmarks')) || [];
         setBookmarkCount(bookmarks.length);

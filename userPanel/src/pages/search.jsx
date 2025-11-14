@@ -11,6 +11,9 @@ const Search = () => {
     const [error, setError] = useState(null);
     const [isLoading, setIsLoading] = useState(false);
 
+    // It reads the query from the URL.
+// Saves it in searchQuery.
+// Calls performSearch(query) to fetch and filter books.
     useEffect(() => {
         const query = searchParams.get('query');
         setSearchQuery(query || '');
@@ -24,7 +27,7 @@ const Search = () => {
         setIsLoading(true);
         setError(null);
         try {
-            const response = await axios.get('http://localhost:5000/api/books');
+            const response = await axios.get('http://localhost:5000/api/books'); //Sends a GET request to your backend to get all books.
             const fetchedBooks = response.data.map((book) => ({
                 id: book.id,
                 title: book.title,
@@ -41,6 +44,7 @@ const Search = () => {
             }));
 
             // Filter books based on title or author
+            // Checks each book's title or author to see if it contains the search term.
             const lowerQuery = query.toLowerCase();
             const results = fetchedBooks.filter((book) =>
                 book.title.toLowerCase().includes(lowerQuery) ||
@@ -48,7 +52,7 @@ const Search = () => {
             );
 
             setFilteredBooks(results);
-
+            
             if (results.length === 0) {
                 setError(`No books found matching "${query}". Please try searching with a different title or author name.`);
             }

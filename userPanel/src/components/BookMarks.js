@@ -6,11 +6,13 @@ const Bookmarks = () => {
     const [bookmarks, setBookmarks] = useState([]);
     const [downloadingIndex, setDownloadingIndex] = useState(null);
 
+    // Reads saved bookmarks from localStorage
     useEffect(() => {
         const storedBookmarks = JSON.parse(localStorage.getItem('bookmarks')) || [];
         setBookmarks(storedBookmarks);
     }, []);
 
+    // Removes a bookmark and updates localStorage
     const removeBookmark = (bookToRemove) => {
         const updatedBookmarks = bookmarks.filter(
             (book) => !(book.title === bookToRemove.title && book.author === bookToRemove.author)
@@ -71,7 +73,7 @@ const Bookmarks = () => {
                                         } catch (e) {
                                             resolvedUrl = null;
                                         }
-
+                                        // Derive a safe filename from book title and URL
                                         const deriveFilename = () => {
                                             const urlParts = (book.bookUrl || '').split('/');
                                             const lastPart = urlParts[urlParts.length - 1] || 'file';
@@ -102,7 +104,7 @@ const Bookmarks = () => {
                                             return;
                                         }
 
-                                        // Same-origin: fetch blob to give friendly filename
+                                        // Same-origin: attempt to fetch and download the file directly 
                                         setDownloadingIndex(index);
                                         try {
                                             const response = await fetch(book.bookUrl);

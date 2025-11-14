@@ -71,9 +71,9 @@ const BookCard = ({ book }) => {
 
         setIsDownloading(true);
         try {
-            const response = await fetch(book.bookUrl);
+            const response = await fetch(book.bookUrl); // fetch(...) sends an HTTP request to the URL: book.bookUrl
             if (!response.ok) throw new Error(`Network response was not ok: ${response.status}`);
-            const blob = await response.blob();
+            const blob = await response.blob(); // Binary large object converts response data into a blob format .pdf, .epub, etc.
             const url = window.URL.createObjectURL(blob);
             const a = document.createElement('a');
             a.href = url;

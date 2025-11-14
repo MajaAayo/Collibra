@@ -11,6 +11,7 @@ const Explore = () => {
   const [error, setError] = useState(null);
 
   // Function to fetch books from the adminPanel backend
+
   const fetchBooks = async () => {
     try {
       const response = await axios.get("http://localhost:5000/api/books");
@@ -47,7 +48,8 @@ const Explore = () => {
     ws.onopen = () => {
       console.log("WebSocket connected");
     };
-
+    // Whenever books are updated in the backend (admin adds/edits/deletes), it refetches books automatically.
+    // 
     ws.onmessage = (event) => {
       const message = JSON.parse(event.data);
       if (message.type === "BOOKS_UPDATED") {
@@ -70,10 +72,11 @@ const Explore = () => {
     };
   }, []);
 
+  
   const normalizeGenre = (genre) => {
     return genre.toLowerCase().trim();
   };
-
+  // Handles genre filter changes and updates displayed books accordingly.
   const handleFilterChange = (event) => {
     const genre = event.target.value;
     setSelectedGenre(genre);
