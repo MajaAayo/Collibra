@@ -32,7 +32,7 @@ db.connect((err) => {
   if (err) return console.error('Error connecting to MySQL:', err);
   console.log('Connected to MySQL');
 });
-
+// Ensure uploads directory exists
 const uploadDir = path.join(__dirname, 'uploads');
 if (!fs.existsSync(uploadDir)) fs.mkdirSync(uploadDir);
 
@@ -48,13 +48,13 @@ wss.on('connection', (ws) => {
   console.log('WebSocket client connected');
   ws.on('close', () => console.log('WebSocket client disconnected'));
 });
-
+// Broadcast book updates to all connected clients
 const broadcastUpdate = () => {
   wss.clients.forEach((client) => {
     if (client.readyState === WebSocket.OPEN) client.send(JSON.stringify({ type: 'BOOKS_UPDATED' })); // Notify clients about book updates
   });
 };
-
+// Admin login endpoint
 app.post('/api/login', (req, res) => {
   const { username, password } = req.body;
   const ADMIN_USERNAME = 'admin';
